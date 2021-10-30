@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="bootstrap.css">
+
+
+  <!--- <link rel="stylesheet" href="bootstrap.min.css">    -->
+  <!--    --> <SCript src="bootstrap.min.js"></SCript>
+  
+  <script src="https://kit.fontawesome.com/9ba46bf25f.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body style="background-color: black;" class="row justify-content-center">
+    <header class="nav-link">
+      <section class="container">
+        <div class="">
+          <h1 style="color: white;"><i class="fas fa-sun"></i> LX</h1>
+        </div>
+        <nav class="navbar-expand-sm">
+            <a href="index.html" style="color: white;">Pag principal</a>
+          <a href="Trabajo1.html" style="color: white;">Alacenas</a>
+          <a href="Trabajo2.html" style="color: white;">Muebles en General</a>
+          <a href="Trabajo3.html" style="color: white;">Cavas</a>
+          <a href="https://www.instagram.com/luxurymuebles_/" target="_blank" style="color: white;">Instagram</a>
+          <a href="#contacto" style="color: white;">Contacto</a>
+        </nav><br>
+      </section>
+    </header>
+
+
+
+<div class="form-control">
+
+    <form name="fvalida">
+        <DIV class="container">
+            <h1 class="form-text"> <br> Formulario de Contacto</h1> <br>
+        
+           <div class="form-text">
+                Nombre: 
+                <input type="text" name="nombre" size="30" maxlength="100" placeholder="example Juan Carlos">
+           
+            <br><br>
+                Telefono: 
+                <input type="tel" name="tel" size="30" minlength="8" maxlength="11" placeholder="example 43081111 ">
+            <br><br>
+                 Mail: 
+                <input type="email" name="mail" size="30" maxlength="100" placeholder="Si no tiene mail escriba 'No' ">
+       <br><br>
+               Trabajo a realizar: 
+                    <select name=laburo>
+                        <option value="Elegir">Elija el Trabajo
+                        <option value="Alacena">Alacena
+                        <option value="Cavas">Cavas
+                        <option value="Mesada">Mesada
+                        <option value="Sobremesada">Sobremesada
+                        <option value="Zapatero">Zapatero
+                        <option value="Cajonera">Cajonera
+                        <option value="Otros">Otros
+                    </select>
+              <br>
+<br>
+              Localidad: 
+                
+                    <select name=lugar>
+                        <option value="Seleccion">Seleccione Ubicación
+                        <option value="ZonaSur">Zona Sur
+                        <option value="Capital">Capital
+                        <option value="Otros">Otros
+                    </select>
+          <br><br>
+                    <label for="comentarios">Comentarios:</label> <textarea name="comentarios" rows="10" cols="30" placeholder="Example
+Necesito un mueble de melanina blanca de unos 185cm de alto  x 60cm de ancho x 25 largo, estilo biblioteca con 6 estantes"></textarea>
+               
+
+
+               
+            </div>
+          
+                <input type="button" value="Enviar" onclick="valida_envia()"></td>
+      
+    </form>
+</DIV>
+</div>
+
+
+    <script>
+        //Validación de un formulario con Javascript
+        //Fuente: https://desarrolloweb.com/articulos/1767.php
+        function valida_envia() {
+            //valido el nombre
+            if (document.fvalida.nombre.value.length == 0) {
+                alert("Tiene que escribir su nombre")
+                document.fvalida.nombre.focus()
+                return 0;
+            }
+
+            //valido el telefono tiene que ser entero mayor que 0
+            tel = document.fvalida.tel.value
+            tel = validarEntero(tel)
+            document.fvalida.tel.value = tel
+            if (tel == "") {
+                alert("Tiene que introducir un número de telefono.")
+                document.fvalida.tel.focus()
+                return 0;
+            } else {
+                if (tel < 0) {
+                    alert("Debe ser mayor a 0.")
+                    document.fvalida.tel.focus()
+                    return 0;
+                }
+            }
+                        //valido el laburo
+            if (document.fvalida.laburo.selectedIndex == 0) {
+                alert("Debe seleccionar el tipo de trabajo.")
+                document.fvalida.laburo.focus()
+                return 0;
+            }
+
+
+        
+
+
+
+
+            //valido la localidad
+            if (document.fvalida.lugar.selectedIndex == 0) {
+                alert("Debe seleccionar la localidad.")
+                document.fvalida.lugar.focus()
+                return 0;
+            }
+
+            //el formulario se envia
+            alert("Muchas gracias por enviar el formulario");
+            document.fvalida.submit();
+        }
+        
+        function validarEntero(valor) {
+            //intento convertir a entero.
+            //si era un entero no le afecta, si no lo era lo intenta convertir
+            valor = parseInt(valor)
+
+            //Compruebo si es un valor numérico
+            if (isNaN(valor)) {
+                //entonces (no es numero) devuelvo el valor cadena vacia
+                return ""
+            } else {
+                //En caso contrario (Si era un número) devuelvo el valor
+                return valor
+            }
+        }
+    </script>
+</body>
+
+
+</html>
